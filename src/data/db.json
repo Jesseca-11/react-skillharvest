@@ -1,0 +1,33 @@
+{
+  "datas": [
+    {
+      "fname": "Jessica",
+      "lname": "John",
+      "Email": "john@gmail.com",
+      "fnum": "borrow",
+      "id": "1"
+    },
+    {
+      "fname": "Delphine",
+      "lname": "Peter",
+      "Email": "peter@gmail.com",
+      "fnum": "borrow",
+      "id": "2"
+    },
+    {
+      "fname": "Charles",
+      "lname": "Joseph",
+      "Email": "josephn@gmail.com",
+      "fnum": "borrow",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "fname": "jessica",
+      "lname": "osuagwu",
+      "email": "jesseyosuagwu@gmail.com",
+      "fnum": "08109088680"
+    }
+    
+  ]
+}

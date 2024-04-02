@@ -8,7 +8,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/rea
 
 
 function App() {
-  return (
+  
+    return (
       <Router>
     <div className="App">
       <Header />
@@ -21,11 +22,12 @@ function App() {
             <Footer />
           </Route>
         </Switch>
-        
+
       </div>
     </div>
-  </Router>
+    </Router>
     );
+  
 }
 
 export default App;

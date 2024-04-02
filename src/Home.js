@@ -2,16 +2,65 @@ import myImage1 from './images/myImage1.jpg';
 import myDesign2 from './images/myDesign2.jpg';
 import myDev1 from './images/myDev1.jpg';
 import myAnalytics from './images/myAnalytics.jpg';
+import { useEffect, useState } from 'react';
+
 
 
 
 
 function Home() {
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [email, setEmail] = useState('');
+    const [fnum, setFnum] = useState('');
+
+
+
+    // const [datas, setDatas] = useState([
+    //     { fname: "Jessica", lname: "John", Email: "john@gmail.com", fnum: "borrow",id: 1}, 
+    //     { fname: "Delphine", lname: "Peter", Email: "peter@gmail.com", fnum: "borrow", id: 2},
+    //     { fname: "Charles", lname: "Joseph", Email: "josephn@gmail.com", fnum: "borrow", id: 3} 
+    // ]);
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = { fname, lname, email, fnum };
+
+        fetch('http://localhost:8001/datas', {
+            method: 'POST',
+            header: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        }).then(() => {
+            console.log('New data Added');
+        })
+    }
+
+    // const datas= [datas, setDatas] = useState();
+
+    useEffect(() => {
+        setTimeout(() => {
+          fetch('http://localhost:8001/datas')
+          .then(res => {
+            return res.json();
+          })
+        //   .then(data => {
+        //     setFname(data);
+        //     setLname(data);
+        //     setEmail(data);
+        //     setFnum(data);
+        //   })
+        })
+    }, []);
+
+
+
+
     return (
         <>
 
             <div className="container-fluid hitext ">
-                <div className="row mb-5">
+                <div className="row mb-5 ps-3">
                     <div className="col-sm-6 col-lg-6 col-xxl-6 text-light title">
                         <h1>Better Solutions <span className="text-info">For Your Business </span></h1>
                         <p className="lead">We are team of talented designers making website with Passion</p>
@@ -231,35 +280,39 @@ function Home() {
                         </div>
                         <div className="modal-body">
                             <p className="lead">Fill out the form and we will get back to you</p>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label for="first-name" className="col-form-label">First Name</label>
-                                    <input type="text" className="form-control" id="first-name" placeholder="Enter first name" />
+                                    <input type="text" className="form-control" id="first-name" placeholder="Enter first name" value={fname} onChange={(e) => setFname(e.target.value)} />
                                 </div>
                                 <div className="mb-3">
                                     <label for="last-name" className="col-form-label">Last Name</label>
-                                    <input type="text" className="form-control" id="last-name" placeholder="Enter last name" />
+                                    <input type="text" className="form-control" id="last-name" placeholder="Enter last name" value={lname} onChange={(e) => setLname(e.target.value)} />
                                 </div>
                                 <div className="mb-3">
                                     <label for="email" className="col-form-label">Email</label>
-                                    <input type="text" className="form-control" id="email" placeholder="Enter email" />
+                                    <input type="text" className="form-control" id="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className="mb-3">
                                     <label for="number" className="col-form-label">Phone Number</label>
-                                    <input type="text" className="form-control" id="number" placeholder="Enter phone number" />
+                                    <input type="text" className="form-control" id="number" placeholder="Enter phone number" value={fnum} onChange={(e) => setFnum(e.target.value)} />
+                                </div>
+
+
+                                <div className="modal-footer">
+                                    <button className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button className="btn btn-primary" >Submit</button>
+                                
                                 </div>
                             </form>
                         </div>
-                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary">Submit</button>
-                         </div>
-                        
+
+
                     </div>
                 </div>
             </div>
 
-
+            {/* <div> <Forms datas={datas} />  </div> */}
 
 
         </>
