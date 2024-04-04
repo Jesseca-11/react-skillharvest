@@ -8,26 +8,23 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/rea
 
 
 function App() {
-  
-    return (
-      <Router>
-    <div className="App">
-      <Header />
-      <div className='content'>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/footer" >
-            <Footer />
-          </Route>
-        </Switch>
 
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <div className='content'>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
       </div>
-    </div>
     </Router>
-    );
-  
+  );
+
 }
 
 export default App;

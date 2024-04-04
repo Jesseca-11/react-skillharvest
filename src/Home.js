@@ -3,6 +3,9 @@ import myDesign2 from './images/myDesign2.jpg';
 import myDev1 from './images/myDev1.jpg';
 import myAnalytics from './images/myAnalytics.jpg';
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+
+
 
 
 
@@ -13,19 +16,19 @@ function Home() {
     const [lname, setLname] = useState('');
     const [email, setEmail] = useState('');
     const [fnum, setFnum] = useState('');
+    
+   
 
+    const history =useHistory(); 
 
-
-    // const [datas, setDatas] = useState([
-    //     { fname: "Jessica", lname: "John", Email: "john@gmail.com", fnum: "borrow",id: 1}, 
-    //     { fname: "Delphine", lname: "Peter", Email: "peter@gmail.com", fnum: "borrow", id: 2},
-    //     { fname: "Charles", lname: "Joseph", Email: "josephn@gmail.com", fnum: "borrow", id: 3} 
-    // ]);
+    
 
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const data = { fname, lname, email, fnum };
+
+       
 
         fetch('http://localhost:8001/datas', {
             method: 'POST',
@@ -33,23 +36,23 @@ function Home() {
             body: JSON.stringify(data)
         }).then(() => {
             console.log('New data Added');
-        })
+            history.push('/');
+        })  
+
     }
 
-    // const datas= [datas, setDatas] = useState();
+    
 
+
+
+    
     useEffect(() => {
         setTimeout(() => {
           fetch('http://localhost:8001/datas')
           .then(res => {
             return res.json();
-          })
-        //   .then(data => {
-        //     setFname(data);
-        //     setLname(data);
-        //     setEmail(data);
-        //     setFnum(data);
-        //   })
+          },1000);
+        
         })
     }, []);
 
@@ -312,7 +315,7 @@ function Home() {
                 </div>
             </div>
 
-            {/* <div> <Forms datas={datas} />  </div> */}
+            
 
 
         </>
